@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Aplications\DAO\PostDao;
+use App\Infra\DAO\PostDaoDatabase;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,10 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PostDao::class, PostDaoDatabase::class);
     }
 
-    /**
+    /**s
      * Bootstrap any application services.
      *
      * @return void
