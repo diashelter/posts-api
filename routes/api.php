@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => 'Hello World');
+Route::get('/ping', function () {
+    return response()->json(['message' => 'pong']);
+});
 Route::get('/posts', [\App\Http\Controllers\Api\PostController::class, 'index'])->name('api.posts.index');
 Route::post('/posts', [\App\Http\Controllers\Api\PostController::class, 'store'])->name('api.posts.store');
 Route::get('/schedule/posts', [\App\Http\Controllers\Api\PostController::class, 'schedulesPost']);
